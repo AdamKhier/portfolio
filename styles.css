@@ -34,6 +34,8 @@ html[data-theme="blueprint"] {
   --grid-line: rgb(255 255 255 / 0.07);
   --grid-line-strong: rgb(255 255 255 / 0.13);
 }
+html[data-theme="blueprint"] .hero-role mark { color: #16315f; }
+html[data-theme="blueprint"] ::selection { color: #16315f; }
 
 /* ——— Base ——— */
 * { box-sizing: border-box; }
