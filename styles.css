@@ -370,6 +370,7 @@ html[data-theme="blueprint"] .theme-icon { background: transparent; box-shadow: 
 .now ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
 .now li span { color: var(--signal); font-weight: 700; }
 .now-open { color: var(--ink-soft); }
+.now .btn { margin-top: 0.5rem; }
 
 /* ——— Toolbox ——— */
 .tool-rows { margin: 2.2rem 0 0; border-top: 1.5px solid var(--ink); }
