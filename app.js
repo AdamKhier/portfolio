@@ -121,8 +121,8 @@
   const COUNT = 60;
 
   function themeColors() {
-    const bp = root.dataset.theme === "dark";
-    return { dot: bp ? "232,228,210" : "26,35,64" };
+    const dark = root.dataset.theme === "dark";
+    return { dot: dark ? "244,246,248" : "35,39,46" };
   }
   function paintField() { /* colors read live each frame; nothing cached */ }
 
