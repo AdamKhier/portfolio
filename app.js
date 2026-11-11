@@ -11,14 +11,14 @@
   const toggle = document.getElementById("themeToggle");
   try {
     const saved = localStorage.getItem("ak-theme");
-    if (saved === "blueprint" || saved === "night") setTheme("blueprint");
+    if (saved === "dark" || saved === "blueprint" || saved === "night") setTheme("dark");
   } catch (_) { /* storage unavailable */ }
   toggle.addEventListener("click", () => {
-    setTheme(root.dataset.theme === "blueprint" ? "paper" : "blueprint");
+    setTheme(root.dataset.theme === "dark" ? "paper" : "dark");
   });
   function setTheme(mode) {
     root.dataset.theme = mode;
-    const bp = mode === "blueprint";
+    const bp = mode === "dark";
     toggle.setAttribute("aria-pressed", String(bp));
     toggle.setAttribute("aria-label", bp ? "Switch to paper mode" : "Switch to blueprint mode");
     try { localStorage.setItem("ak-theme", mode); } catch (_) { /* ignore */ }
@@ -121,7 +121,7 @@
   const COUNT = 60;
 
   function themeColors() {
-    const bp = root.dataset.theme === "blueprint";
+    const bp = root.dataset.theme === "dark";
     return { dot: bp ? "232,228,210" : "26,35,64" };
   }
   function paintField() { /* colors read live each frame; nothing cached */ }
