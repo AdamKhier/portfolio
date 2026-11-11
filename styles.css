@@ -34,7 +34,6 @@ html[data-theme="dark"] {
   --grid-line: rgb(255 255 255 / 0.05);
   --grid-line-strong: rgb(255 255 255 / 0.1);
 }
-html[data-theme="dark"] .hero-role mark { color: #0f1626; }
 html[data-theme="dark"] ::selection { color: #0f1626; }
 
 /* ——— Base ——— */
@@ -202,9 +201,9 @@ html[data-theme="dark"] .theme-icon { background: transparent; box-shadow: 4px -
   font-weight: 500;
 }
 .hero-role mark {
-  background: linear-gradient(transparent 52%, var(--hi) 52% 94%, transparent 94%);
+  background: none;
   color: inherit;
-  padding: 0 0.1em;
+  padding: 0;
 }
 .hero-cta { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
 .hero-stats {
