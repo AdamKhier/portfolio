@@ -10,16 +10,17 @@
   const root = document.documentElement;
   const toggle = document.getElementById("themeToggle");
   try {
-    if (localStorage.getItem("ak-theme") === "night") setTheme("night");
+    const saved = localStorage.getItem("ak-theme");
+    if (saved === "blueprint" || saved === "night") setTheme("blueprint");
   } catch (_) { /* storage unavailable */ }
   toggle.addEventListener("click", () => {
-    setTheme(root.dataset.theme === "night" ? "paper" : "night");
+    setTheme(root.dataset.theme === "blueprint" ? "paper" : "blueprint");
   });
   function setTheme(mode) {
     root.dataset.theme = mode;
-    const night = mode === "night";
-    toggle.setAttribute("aria-pressed", String(night));
-    toggle.setAttribute("aria-label", night ? "Switch to paper mode" : "Switch to night mode");
+    const bp = mode === "blueprint";
+    toggle.setAttribute("aria-pressed", String(bp));
+    toggle.setAttribute("aria-label", bp ? "Switch to paper mode" : "Switch to blueprint mode");
     try { localStorage.setItem("ak-theme", mode); } catch (_) { /* ignore */ }
     paintField(); // recolor particles for the new theme
   }
@@ -117,11 +118,11 @@
   const ctx = canvas.getContext("2d");
   let pts = [], raf = 0, running = false;
   let mouse = { x: -9999, y: -9999 };
-  const COUNT = 70, LINK = 130;
+  const COUNT = 60;
 
   function themeColors() {
-    const night = root.dataset.theme === "night";
-    return { dot: night ? "139,160,255" : "36,71,245", line: night ? "139,160,255" : "26,35,64" };
+    const bp = root.dataset.theme === "blueprint";
+    return { dot: bp ? "232,228,210" : "26,35,64" };
   }
   function paintField() { /* colors read live each frame; nothing cached */ }
 
@@ -142,7 +143,7 @@
   }
   function frame() {
     const w = canvas.clientWidth, h = canvas.clientHeight;
-    const { dot, line } = themeColors();
+    const { dot } = themeColors();
     ctx.clearRect(0, 0, w, h);
     for (const p of pts) {
       const dx = mouse.x - p.x, dy = mouse.y - p.y;
@@ -156,20 +157,10 @@
       if (p.x < -20) p.x = w + 20; if (p.x > w + 20) p.x = -20;
       if (p.y < -20) p.y = h + 20; if (p.y > h + 20) p.y = -20;
     }
-    ctx.lineWidth = 1;
-    for (let i = 0; i < pts.length; i++) {
-      for (let j = i + 1; j < pts.length; j++) {
-        const a = pts[i], b = pts[j];
-        const dx = a.x - b.x, dy = a.y - b.y;
-        const d = Math.hypot(dx, dy);
-        if (d < LINK) {
-          ctx.strokeStyle = `rgba(${line},${((1 - d / LINK) * 0.22).toFixed(3)})`;
-          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-        }
-      }
-    }
+    const t = performance.now();
     for (const p of pts) {
-      ctx.fillStyle = `rgba(${dot},0.55)`;
+      const tw = 0.7 + 0.3 * Math.sin(t / 900 + p.x);
+      ctx.fillStyle = `rgba(${dot},${(0.34 * tw).toFixed(3)})`;
       ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
     }
     raf = requestAnimationFrame(frame);

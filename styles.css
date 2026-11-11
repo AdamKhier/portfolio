@@ -12,22 +12,27 @@
   --card: #fffdf7;
   --nav-bg: rgb(247 243 234 / 0.86);
   --shadow: 0 18px 40px -22px rgb(26 35 64 / 0.35);
-  --radius: 18px;
+  --radius: 255px 22px 225px 22px / 22px 225px 22px 255px;
   --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-hand: "Caveat", "Segoe Script", cursive;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --grid-line: rgb(26 35 64 / 0.055);
+  --grid-line-strong: rgb(26 35 64 / 0.1);
 }
-html[data-theme="night"] {
-  --paper: #11162b;
-  --paper-soft: #1a2140;
-  --ink: #f2eee1;
-  --ink-soft: #aab1c9;
-  --line: #2c3560;
-  --cobalt: #8ba0ff;
-  --cobalt-deep: #aebfff;
-  --hi: #8a6d00;
-  --card: #171d38;
-  --nav-bg: rgb(17 22 43 / 0.86);
+html[data-theme="blueprint"] {
+  --paper: #16315f;
+  --paper-soft: #1d3d75;
+  --ink: #f3efe0;
+  --ink-soft: #b7c2dd;
+  --line: #41619c;
+  --cobalt: #a9bdff;
+  --cobalt-deep: #ccd7ff;
+  --hi: #ffd02f;
+  --card: #1a3870;
+  --nav-bg: rgb(22 49 95 / 0.86);
   --shadow: 0 18px 44px -20px rgb(0 0 0 / 0.7);
+  --grid-line: rgb(255 255 255 / 0.07);
+  --grid-line-strong: rgb(255 255 255 / 0.13);
 }
 
 /* ——— Base ——— */
@@ -35,7 +40,13 @@ html[data-theme="night"] {
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
-  background: var(--paper);
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"),
+    repeating-linear-gradient(0deg, var(--grid-line) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(0deg, var(--grid-line-strong) 0 1px, transparent 1px 160px),
+    repeating-linear-gradient(90deg, var(--grid-line-strong) 0 1px, transparent 1px 160px),
+    var(--paper);
   color: var(--ink);
   font-family: var(--font-display);
   font-size: 1.0625rem;
@@ -44,7 +55,16 @@ body {
   overflow-x: hidden;
 }
 h1, h2, h3 { line-height: 1.08; letter-spacing: -0.02em; margin: 0; }
-h2 { font-size: clamp(1.9rem, 4.5vw, 3rem); font-weight: 700; }
+h2 {
+  font-family: var(--font-hand);
+  font-size: clamp(2.6rem, 5.5vw, 3.8rem);
+  font-weight: 700; letter-spacing: 0;
+}
+.section-head h2, .about h2, .contact h2 {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='12' viewBox='0 0 120 12' preserveAspectRatio='none'%3E%3Cpath d='M2 8 C 25 3, 45 10, 70 6 S 105 5, 118 7' fill='none' stroke='%23e4572e' stroke-width='3.5' stroke-linecap='round'/%3E%3C/svg%3E") left bottom / 0% 0.3em no-repeat;
+  padding-bottom: 0.14em;
+}
+.reveal.in h2 { background-size: 100% 0.3em; transition: background-size 0.7s ease 0.3s; }
 p { margin: 0; }
 a { color: var(--cobalt); }
 ::selection { background: var(--hi); color: var(--ink); }
@@ -80,7 +100,7 @@ a { color: var(--cobalt); }
 .brand { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--ink); font-weight: 700; }
 .brand-mark {
   display: grid; place-items: center;
-  width: 2rem; height: 2rem; border-radius: 9px;
+  width: 2rem; height: 2rem; border-radius: 9px 11px 8px 12px / 11px 8px 12px 9px;
   background: var(--cobalt); color: #fff;
   font-family: var(--font-mono); font-weight: 700;
   transition: transform 0.25s ease;
@@ -89,7 +109,7 @@ a { color: var(--cobalt); }
 .nav-links { display: flex; gap: 0.25rem; margin-inline: auto; }
 .nav-links a {
   color: var(--ink-soft); text-decoration: none; font-weight: 500;
-  padding: 0.45rem 0.8rem; border-radius: 999px;
+  padding: 0.45rem 0.8rem; border-radius: 225px 14px 255px 14px / 14px 255px 14px 225px;
   transition: color 0.2s ease, background 0.2s ease;
 }
 .nav-links a:hover { color: var(--ink); background: var(--paper-soft); }
@@ -103,7 +123,7 @@ a { color: var(--cobalt); }
   color: var(--ink); text-decoration: none;
   background: transparent;
   border: 2px solid var(--ink);
-  border-radius: 999px;
+  border-radius: 255px 25px 225px 25px / 25px 225px 25px 255px;
   padding: 0.7rem 1.4rem;
   cursor: pointer;
   transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
@@ -128,7 +148,7 @@ a { color: var(--cobalt); }
   border: 2px solid var(--ink);
   transition: background 0.3s ease;
 }
-html[data-theme="night"] .theme-icon { background: transparent; box-shadow: 4px -2px 0 1px var(--ink) inset; border-color: transparent; }
+html[data-theme="blueprint"] .theme-icon { background: transparent; box-shadow: 4px -2px 0 1px var(--ink) inset; border-color: transparent; }
 
 /* ——— Hero ——— */
 .hero {
@@ -144,11 +164,29 @@ html[data-theme="night"] .theme-icon { background: transparent; box-shadow: 4px 
   padding: clamp(4rem, 10vw, 7.5rem) clamp(1.25rem, 4vw, 2.5rem) clamp(3rem, 7vw, 5rem);
 }
 .hero-name {
-  font-size: clamp(3.4rem, 12vw, 8.5rem);
+  font-family: var(--font-hand);
+  font-size: clamp(4.4rem, 15vw, 10.5rem);
   font-weight: 700;
   text-transform: none;
+  letter-spacing: 0;
 }
-.hero-name .line { display: block; overflow: hidden; }
+.hero-name .line {
+  display: block;
+  clip-path: inset(-12% 102% -12% -2%);
+  animation: write 1.05s cubic-bezier(0.45, 0, 0.25, 1) forwards;
+}
+.hero-name .line:nth-child(2) { animation-delay: 0.6s; }
+@keyframes write { to { clip-path: inset(-12% -6% -12% -2%); } }
+.flourish {
+  display: block; width: min(300px, 58%); height: auto;
+  margin-top: 0.2rem; overflow: visible;
+}
+.flourish path {
+  fill: none; stroke: var(--signal); stroke-width: 6; stroke-linecap: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+  animation: draw 0.7s ease 1.5s forwards;
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
 .hero-name .dot { color: var(--signal); }
 .hero-role {
   margin-top: 1.4rem;
@@ -167,7 +205,7 @@ html[data-theme="night"] .theme-icon { background: transparent; box-shadow: 4px 
   margin: 2.6rem 0 0;
 }
 .hero-stats div { display: flex; flex-direction: column-reverse; }
-.hero-stats dd { margin: 0; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; }
+.hero-stats dd { margin: 0; font-family: var(--font-hand); font-size: clamp(2.4rem, 4.5vw, 3.2rem); font-weight: 700; }
 .hero-stats dt {
   font-family: var(--font-mono); font-size: 0.75rem;
   letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft);
@@ -191,10 +229,9 @@ html[data-theme="night"] .theme-icon { background: transparent; box-shadow: 4px 
 /* Hero load-in: one orchestrated sequence */
 .load { opacity: 0; animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
 .hero-inner .load:nth-child(1) { animation-delay: 0.05s; }
-.hero-inner .load:nth-child(2) { animation-delay: 0.16s; }
-.hero-inner .load:nth-child(3) { animation-delay: 0.3s; }
-.hero-inner .load:nth-child(4) { animation-delay: 0.42s; }
-.hero-inner .load:nth-child(5) { animation-delay: 0.54s; }
+.hero-inner .load:nth-child(4) { animation-delay: 0.55s; }
+.hero-inner .load:nth-child(5) { animation-delay: 0.68s; }
+.hero-inner .load:nth-child(6) { animation-delay: 0.8s; }
 @keyframes rise {
   from { opacity: 0; transform: translateY(26px); }
   to { opacity: 1; transform: none; }
@@ -235,7 +272,7 @@ html[data-theme="night"] .theme-icon { background: transparent; box-shadow: 4px 
   font: inherit; font-size: 0.88rem; font-weight: 600;
   font-family: var(--font-mono);
   padding: 0.5rem 1.05rem;
-  border-radius: 999px;
+  border-radius: 225px 18px 255px 18px / 18px 255px 18px 225px;
   border: 1.5px solid var(--line);
   background: transparent; color: var(--ink-soft);
   cursor: pointer;
@@ -250,7 +287,7 @@ html[data-theme="night"] .theme-icon { background: transparent; box-shadow: 4px 
 .more-btn {
   font: inherit; font-size: 0.95rem; font-weight: 700;
   padding: 0.7rem 1.6rem;
-  border-radius: 999px;
+  border-radius: 255px 22px 225px 22px / 22px 225px 22px 255px;
   border: 1.5px solid var(--ink);
   background: transparent; color: var(--ink);
   cursor: pointer;
@@ -266,17 +303,19 @@ html[data-theme="night"] .theme-icon { background: transparent; box-shadow: 4px 
   grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
   gap: 1.1rem;
 }
+.grid > :nth-child(odd) { border-radius: 225px 22px 255px 22px / 22px 255px 22px 225px; transform: rotate(-0.35deg); }
+.grid > :nth-child(even) { transform: rotate(0.35deg); }
 .card {
   background: var(--card);
-  border: 1.5px solid var(--line);
+  border: 2px solid var(--ink);
   border-radius: var(--radius);
   padding: 1.5rem 1.4rem 1.35rem;
   display: flex; flex-direction: column; gap: 0.7rem;
   transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, opacity 0.3s ease;
   will-change: transform;
 }
-.card:hover { border-color: var(--ink); box-shadow: var(--shadow); }
-.card h3 { font-size: 1.3rem; }
+.card:hover { border-color: var(--ink); box-shadow: 4px 5px 0 color-mix(in srgb, var(--ink) 22%, transparent); }
+.card h3 { font-family: var(--font-hand); font-size: 1.7rem; font-weight: 700; letter-spacing: 0; }
 .card p { color: var(--ink-soft); font-size: 0.98rem; flex: 1; }
 .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0; padding: 0; }
 .tags li {
@@ -284,7 +323,7 @@ html[data-theme="night"] .theme-icon { background: transparent; box-shadow: 4px 
   letter-spacing: 0.04em;
   background: var(--paper-soft);
   border: 1px solid var(--line);
-  padding: 0.2rem 0.6rem; border-radius: 999px;
+  padding: 0.2rem 0.6rem; border-radius: 225px 12px 255px 12px / 12px 255px 12px 225px;
   color: var(--ink-soft);
 }
 .card a {
@@ -315,9 +354,10 @@ html[data-theme="night"] .theme-icon { background: transparent; box-shadow: 4px 
 .about h2 { margin-bottom: 1.2rem; }
 .now {
   background: var(--card);
-  border: 1.5px solid var(--line);
+  border: 2px solid var(--ink);
   border-radius: var(--radius);
   padding: 1.6rem;
+  transform: rotate(0.5deg);
 }
 .now h3 {
   font-family: var(--font-mono); font-size: 0.8rem;
@@ -347,8 +387,8 @@ html[data-theme="night"] .theme-icon { background: transparent; box-shadow: 4px 
 /* ——— Contact ——— */
 .contact {
   text-align: left;
-  border: 1.5px solid var(--line);
-  border-radius: 26px;
+  border: 2px solid var(--ink);
+  border-radius: 255px 30px 225px 30px / 30px 225px 30px 255px;
   background:
     radial-gradient(42rem 16rem at 15% 0%, rgb(36 71 245 / 0.12), transparent 60%),
     var(--card);
@@ -367,6 +407,35 @@ html[data-theme="night"] .theme-icon { background: transparent; box-shadow: 4px 
   color: var(--ink-soft); font-size: 0.9rem;
 }
 .footer a { font-weight: 600; text-decoration: none; }
+
+/* ——— Margin doodles ——— */
+.margin-note {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-hand); font-size: 1.5rem; font-weight: 600;
+  color: var(--ink-soft);
+  margin: 1.4rem 0 0;
+}
+.doodle-arrow { width: 64px; height: 54px; overflow: visible; }
+.doodle-arrow path {
+  fill: none; stroke: var(--ink-soft); stroke-width: 3;
+  stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.7s ease 0.4s;
+}
+.reveal.in .doodle-arrow path { stroke-dashoffset: 0; }
+.circled { position: relative; white-space: nowrap; }
+.circle-doodle {
+  position: absolute; inset: -22% -14%;
+  width: 128%; height: 144%;
+  overflow: visible; pointer-events: none;
+}
+.circle-doodle path {
+  fill: none; stroke: var(--signal); stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.8s ease 0.5s;
+}
+.reveal.in .circle-doodle path { stroke-dashoffset: 0; }
 
 /* ——— Responsive ——— */
 @media (max-width: 860px) {
@@ -388,4 +457,9 @@ html[data-theme="night"] .theme-icon { background: transparent; box-shadow: 4px 
   .ticker-track { animation: none; }
   .scroll-hint span { animation: none; }
   .card.pop { animation: none; }
+  .hero-name .line { clip-path: none; animation: none; }
+  .flourish path { stroke-dashoffset: 0; animation: none; }
+  .reveal.in h2 { transition: none; }
+  .section-head h2, .about h2, .contact h2 { background-size: 100% 0.3em; }
+  .doodle-arrow path, .circle-doodle path { stroke-dashoffset: 0; transition: none; }
 }
