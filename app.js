@@ -61,20 +61,43 @@
     });
   }
 
-  /* ——— Project filtering ——— */
+  /* ——— Project filtering + show more ——— */
+  const PAGE = 6; // compact view: two rows on desktop
+  let activeFilter = "all", expanded = false;
   const chips = [...document.querySelectorAll(".chip")];
   const cards = [...document.querySelectorAll(".card")];
+  const moreRow = document.getElementById("moreRow");
+  const moreBtn = document.getElementById("moreBtn");
+  const moreLabel = document.getElementById("moreLabel");
+  const inFilter = (card) => activeFilter === "all" || card.dataset.cat.split(" ").includes(activeFilter);
+  function applyView(animate) {
+    const shown = cards.filter(inFilter);
+    cards.forEach((card) => {
+      const i = shown.indexOf(card);
+      const hide = i === -1 || (!expanded && i >= PAGE);
+      card.classList.toggle("is-hidden", hide);
+      card.classList.remove("pop");
+      if (!hide && animate && !reduceMotion) { void card.offsetWidth; card.classList.add("pop"); }
+    });
+    moreRow.hidden = shown.length <= PAGE;
+    moreBtn.setAttribute("aria-expanded", String(expanded));
+    moreLabel.textContent = expanded ? "Show less" : `Show all ${shown.length} projects`;
+  }
   chips.forEach((chip) => chip.addEventListener("click", () => {
     chips.forEach((c) => c.classList.remove("is-active"));
     chip.classList.add("is-active");
-    const f = chip.dataset.filter;
-    cards.forEach((card) => {
-      const show = f === "all" || card.dataset.cat.split(" ").includes(f);
-      card.classList.toggle("is-hidden", !show);
-      card.classList.remove("pop");
-      if (show && !reduceMotion) { void card.offsetWidth; card.classList.add("pop"); }
-    });
+    activeFilter = chip.dataset.filter;
+    expanded = false;
+    applyView(true);
   }));
+  moreBtn.addEventListener("click", () => {
+    expanded = !expanded;
+    applyView(true);
+    if (!expanded) {
+      document.getElementById("work").scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    }
+  });
+  applyView(false);
 
   /* ——— Subtle card tilt (fine pointers only) ——— */
   if (finePointer && !reduceMotion) {

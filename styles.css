@@ -244,6 +244,22 @@ html[data-theme="night"] .theme-icon { background: transparent; box-shadow: 4px 
 .chip:hover { border-color: var(--ink); color: var(--ink); transform: translateY(-1px); }
 .chip.is-active { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 
+/* ——— Show more / less ——— */
+.more-row { display: flex; justify-content: center; margin-top: 1.75rem; }
+.more-row[hidden] { display: none; }
+.more-btn {
+  font: inherit; font-size: 0.95rem; font-weight: 700;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--ink);
+  background: transparent; color: var(--ink);
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+.more-btn:hover { background: var(--ink); color: var(--paper); transform: translateY(-1px); }
+.more-btn .arrow { display: inline-block; transition: transform 0.25s ease; }
+.more-btn[aria-expanded="true"] .arrow { transform: rotate(180deg); }
+
 /* ——— Project grid ——— */
 .grid {
   display: grid;
