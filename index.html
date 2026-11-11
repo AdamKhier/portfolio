@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="paper">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adam Khier — Student Developer</title>
+  <meta name="description" content="Portfolio of Adam Khier, a student developer building web apps, games, hardware hacks and trading research tools." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%232447F5'/><text x='50' y='68' font-size='58' text-anchor='middle' fill='%23F7F3EA' font-family='monospace' font-weight='bold'>A</text></svg>" />
+</head>
+<body>
+  <a class="skip" href="#work">Skip to work</a>
+
+  <nav class="nav" aria-label="Primary">
+    <a class="brand" href="#top" aria-label="Back to top">
+      <span class="brand-mark" aria-hidden="true">A</span>
+      <span class="brand-name">Adam Khier</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#work" data-nav="work">Work</a>
+      <a href="#about" data-nav="about">About</a>
+      <a href="#toolbox" data-nav="toolbox">Toolbox</a>
+      <a href="#contact" data-nav="contact">Contact</a>
+    </div>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to night mode" aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true"></span>
+      </button>
+      <a class="btn btn-small" href="https://github.com/AdamKhier" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <canvas id="field" aria-hidden="true"></canvas>
+    <div class="hero-inner">
+      <p class="eyebrow load">Portfolio — student developer</p>
+      <h1 class="hero-name">
+        <span class="line load">Adam</span>
+        <span class="line load">Khier<span class="dot" aria-hidden="true">.</span></span>
+      </h1>
+      <p class="hero-role load">I&rsquo;m a <mark>student who learns by shipping</mark> — web apps, games, hardware hacks and trading experiments.</p>
+      <div class="hero-cta load">
+        <a class="btn btn-primary" href="#work">See the work</a>
+        <a class="btn" href="mailto:adamkhier@gmail.com">adamkhier@gmail.com</a>
+      </div>
+      <dl class="hero-stats load">
+        <div><dt>Projects shipped</dt><dd>16</dd></div>
+        <div><dt>Languages used</dt><dd>6</dd></div>
+        <div><dt>Excuses made</dt><dd>0</dd></div>
+      </dl>
+    </div>
+    <a class="scroll-hint" href="#work" aria-label="Scroll to work"><span aria-hidden="true"></span></a>
+  </header>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="tickerTrack">
+      <span>Python · TypeScript · React · Next.js · ESP32 · Tailwind CSS · Prisma · Godot · Unity · Docker · Linux · C++ · Lua · PHP · Cloudflare D1 · Blender ·&nbsp;</span>
+    </div>
+  </div>
+
+  <main>
+    <section class="section" id="work" aria-labelledby="workTitle">
+      <div class="section-head reveal">
+        <p class="eyebrow">Selected work</p>
+        <h2 id="workTitle">Things I&rsquo;ve built and can show you</h2>
+        <p class="section-sub">Every project is real, runs, and ships with setup instructions. Pick a lane or browse everything.</p>
+      </div>
+      <div class="chips reveal" role="group" aria-label="Filter projects">
+        <button class="chip is-active" data-filter="all" type="button">Everything</button>
+        <button class="chip" data-filter="web" type="button">Web apps</button>
+        <button class="chip" data-filter="game" type="button">Games</button>
+        <button class="chip" data-filter="hardware" type="button">Hardware</button>
+        <button class="chip" data-filter="data" type="button">Data &amp; trading</button>
+        <button class="chip" data-filter="study" type="button">Study tools</button>
+        <button class="chip" data-filter="tool" type="button">Utilities</button>
+      </div>
+      <div class="grid" id="grid">
+        <article class="card reveal" data-cat="web">
+          <h3>3D Print Orders</h3>
+          <p>Order station, production board and receipts for a 3D-printing shop, synced in realtime.</p>
+          <ul class="tags"><li>Next.js</li><li>Cloudflare D1</li><li>Tailwind</li></ul>
+          <a href="https://github.com/AdamKhier/3d-print-orders" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="web study">
+          <h3>Studly AI</h3>
+          <p>Notes in, flashcards, quizzes and an AI tutor out. Imports PDF and Word docs.</p>
+          <ul class="tags"><li>Next.js</li><li>Prisma</li><li>NextAuth</li></ul>
+          <a href="https://github.com/AdamKhier/studly-ai" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="web">
+          <h3>Splitly</h3>
+          <p>Split bills with friends; debts collapse into the fewest payments possible.</p>
+          <ul class="tags"><li>Node.js</li><li>TypeScript</li><li>Expo</li></ul>
+          <a href="https://github.com/AdamKhier/splitly" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="hardware web">
+          <h3>LG TV Remote</h3>
+          <p>ESP32 infrared blaster plus a phone-friendly web remote, over Wi-Fi.</p>
+          <ul class="tags"><li>Arduino</li><li>React</li><li>ESP32</li></ul>
+          <a href="https://github.com/AdamKhier/lg-tv-remote" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="game">
+          <h3>City Planner</h3>
+          <p>Turn-based hex city builder: 714 tiles, roads, zones and the odd disaster.</p>
+          <ul class="tags"><li>React</li><li>Vite</li><li>Zustand</li></ul>
+          <a href="https://github.com/AdamKhier/city-planner" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="data">
+          <h3>Trading CAT</h3>
+          <p>Categorical futures backtester with walk-forward validation and honest metrics.</p>
+          <ul class="tags"><li>Python</li><li>pandas</li></ul>
+          <a href="https://github.com/AdamKhier/trading-cat" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="data">
+          <h3>Trading Bot MFFU</h3>
+          <p>Strategy research harness with a prop-firm evaluation simulator.</p>
+          <ul class="tags"><li>Python</li><li>Databento</li></ul>
+          <a href="https://github.com/AdamKhier/trading-bot-mffu" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="data">
+          <h3>Consensus Bot</h3>
+          <p>Bitcoin prediction-market data tooling for agent research.</p>
+          <ul class="tags"><li>Python</li></ul>
+          <a href="https://github.com/AdamKhier/consensus-bot" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="study web">
+          <h3>Latin Study</h3>
+          <p>Latin pronoun drills that run anywhere, with zero dependencies.</p>
+          <ul class="tags"><li>Python</li><li>HTML/CSS/JS</li></ul>
+          <a href="https://github.com/AdamKhier/LATIN-STUDY" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="study web">
+          <h3>Recall Trainer</h3>
+          <p>Anki-style flashcards for cramming before school tests.</p>
+          <ul class="tags"><li>HTML/CSS/JS</li></ul>
+          <a href="https://github.com/AdamKhier/recall-trainer" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="game">
+          <h3>Neon Duel</h3>
+          <p>Neon survival shooter on canvas. Installable as an app.</p>
+          <ul class="tags"><li>Canvas</li><li>PWA</li></ul>
+          <a href="https://github.com/AdamKhier/neon-duel" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="game">
+          <h3>Tetris</h3>
+          <p>Tetris with keyboard, touch and gamepad — plus hold and undo.</p>
+          <ul class="tags"><li>HTML/CSS/JS</li></ul>
+          <a href="https://github.com/AdamKhier/tetris-game" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="study">
+          <h3>Typing Trainer</h3>
+          <p>Guided lessons and timed tests with a finger-zone keyboard.</p>
+          <ul class="tags"><li>HTML/CSS/JS</li></ul>
+          <a href="https://github.com/AdamKhier/typing-trainer" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="tool">
+          <h3>AirDrop Protocol</h3>
+          <p>Phone-to-laptop file transfer over BLE discovery and TLS.</p>
+          <ul class="tags"><li>Python</li></ul>
+          <a href="https://github.com/AdamKhier/airdrop-protocol" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="game">
+          <h3>MC D&amp;D Campaign</h3>
+          <p>An AI dungeon master with persistent world state.</p>
+          <ul class="tags"><li>Markdown</li><li>JSON</li></ul>
+          <a href="https://github.com/AdamKhier/mc-dnd-campaign" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="card reveal" data-cat="tool">
+          <h3>Prompt Templates</h3>
+          <p>Six reusable prompts for building software with AI assistance.</p>
+          <ul class="tags"><li>Markdown</li></ul>
+          <a href="https://github.com/AdamKhier/prompts-list" target="_blank" rel="noopener">Open repo <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section about" id="about" aria-labelledby="aboutTitle">
+      <div class="reveal">
+        <p class="eyebrow">About</p>
+        <h2 id="aboutTitle">Student first, builder always</h2>
+        <p>I&rsquo;m Adam, a student developer. My method is simple: pick something I don&rsquo;t understand yet — a framework, a microcontroller, a market — and build until I do. The projects above are the receipts.</p>
+        <p>When I&rsquo;m not shipping, I&rsquo;m studying, playing with game engines, or torturing backtests until they confess.</p>
+      </div>
+      <aside class="now reveal" aria-label="Currently">
+        <h3>Right now</h3>
+        <ul>
+          <li><span aria-hidden="true">▸</span> Growing the trading research tools</li>
+          <li><span aria-hidden="true">▸</span> Keeping the study apps sharp for exam season</li>
+          <li><span aria-hidden="true">▸</span> This site — designed and hand-built</li>
+        </ul>
+        <h3>Open to</h3>
+        <p class="now-open">Feedback, project ideas and building with other students.</p>
+      </aside>
+    </section>
+
+    <section class="section" id="toolbox" aria-labelledby="toolboxTitle">
+      <div class="section-head reveal">
+        <p class="eyebrow">Toolbox</p>
+        <h2 id="toolboxTitle">What I reach for</h2>
+      </div>
+      <dl class="tool-rows">
+        <div class="reveal"><dt>Languages</dt><dd>Python · TypeScript · JavaScript · C++ · Lua · PHP</dd></div>
+        <div class="reveal"><dt>Frontend</dt><dd>React · Next.js · Vite · Tailwind CSS · Expo / React Native</dd></div>
+        <div class="reveal"><dt>Backend &amp; data</dt><dd>Node.js · Prisma · NextAuth · Cloudflare Workers / D1 · pandas</dd></div>
+        <div class="reveal"><dt>Hardware &amp; creative</dt><dd>Arduino / ESP32 · Raspberry Pi · Godot · Unity · Blender</dd></div>
+        <div class="reveal"><dt>Everyday tools</dt><dd>Git · Docker · Linux · Bash · VS Code · Notion</dd></div>
+      </dl>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contactTitle">
+      <div class="reveal">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contactTitle">Have an idea? <br />Let&rsquo;s build it.</h2>
+        <p class="section-sub">Fastest way to reach me is email. I read everything.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="mailto:adamkhier@gmail.com">Say hello</a>
+          <a class="btn" href="https://github.com/AdamKhier" target="_blank" rel="noopener">GitHub profile ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year">2026</span> Adam Khier · Designed &amp; hand-built with HTML, CSS and a little JavaScript.</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
